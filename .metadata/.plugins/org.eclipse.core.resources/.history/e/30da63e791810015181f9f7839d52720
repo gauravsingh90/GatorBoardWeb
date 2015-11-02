@@ -1,0 +1,5 @@
+package com.gatorboard.services;
+
+public class getEventsService {
+
+}

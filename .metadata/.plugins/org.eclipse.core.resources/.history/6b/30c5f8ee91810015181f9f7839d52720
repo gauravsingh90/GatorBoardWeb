@@ -1,0 +1,74 @@
+package com.gatorboard.services;
+
+import java.util.List;
+
+import com.gatorboard.dao.SectionOneDAO;
+import com.gatorboard.dto.SectionOneDTO;
+import com.gatorboard.forms.SectionOneForm;
+public class getEventsService {
+	public List<SectionOneDTO> getData(SectionOneForm objForm) throws Exception {
+		SectionOneDAO dbDAO = new SectionOneDAO();
+		List<SectionOneDTO> listDTO = null;
+		try {
+			
+			listDTO = dbDAO.selectByPinNo(objForm.getPinNo());
+
+			/*for (SectionOneDTO rowDTO : listDTO) {
+				setDTOtoForm(rowDTO);
+			}*/
+	} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return listDTO;
+		
+	}
+	
+	public int saveData(SectionOneForm objForm) throws Exception {
+		try {
+			
+	} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+	
+	public void setData(SectionOneForm objForm,SectionOneDTO objReturnDTO)
+	{
+		if(objReturnDTO.getPinNo()!=null){
+			objForm.setPinNo(objReturnDTO.getPinNo());}
+		else{
+			objForm.setPinNo("");}
+		
+		if(objReturnDTO.getRowID()!=null){
+			objForm.setRowID(objReturnDTO.getRowID());}
+		else{
+			objForm.setRowID("");}
+		
+		if(objReturnDTO.getVerNo()!=null){
+			objForm.setVerNo(objReturnDTO.getVerNo());}
+		else{
+			objForm.setVerNo("");}
+		
+		if(objReturnDTO.getReleaseDate()!=null){
+			objForm.setReleaseDate(objReturnDTO.getReleaseDate().toString());}
+		else{
+			objForm.setReleaseDate("");}
+		
+		if(objReturnDTO.getReviewedBy()!=null){
+			objForm.setReviewedBy(objReturnDTO.getReviewedBy());}
+		else{
+			objForm.setReviewedBy("");}
+		
+		if(objReturnDTO.getApprovedBy()!=null){
+			objForm.setApprovedBy(objReturnDTO.getApprovedBy());}
+		else{
+			objForm.setApprovedBy("");}
+		
+		if(objReturnDTO.getChangeDesc()!=null){
+			objForm.setChangeDesc(objReturnDTO.getChangeDesc());}
+		else{
+			objForm.setChangeDesc("");}
+
+		}
+}

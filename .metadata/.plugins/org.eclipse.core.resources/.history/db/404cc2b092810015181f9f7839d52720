@@ -1,0 +1,61 @@
+/**
+ * 
+ */
+package com.gatorboard.dao;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.sql.rowset.CachedRowSet;
+
+import com.gatorboard.dto.getEventsDTO;
+import com.gatorboard.utils.PropertyReader;
+
+/**
+ * @author singh
+ *
+ */
+public class getEventsDAO {
+	   public List<getEventsDTO> selectByPinNo(String pinNo) throws Exception { 
+		   PropertyReader properties = new PropertyReader(); 
+		   CommonDAO objDAO = new CommonDAO();
+		   CachedRowSet rs = objDAO.selectByPinNo(properties.getTableName("SectionOne"),pinNo);
+		   List<getEventsDTO> list = new ArrayList<getEventsDTO>();
+		   
+		   while (rs.next()) {
+			   getEventsDAO resrcLevelDTO = new getEventsDTO();
+			   resrcLevelDTO.setPinNo(rs.getString("PinNo"));
+			   resrcLevelDTO.setRowID(rs.getString("RowID"));
+	    	   resrcLevelDTO.setVerNo(rs.getString("VerNo"));
+	    	   resrcLevelDTO.setReleaseDate(rs.getDate("ReleaseDate"));
+	    	   resrcLevelDTO.setReviewedBy(rs.getString("ReviewedBy"));
+	    	   resrcLevelDTO.setApprovedBy(rs.getString("ApprovedBy"));
+	    	   resrcLevelDTO.setChangeDesc(rs.getString("ChangeDesc"));
+
+	        	   list.add(resrcLevelDTO);
+	           }
+	         
+	       return list;
+	   }
+	   public List<SectionOneDTO> selectAll() throws Exception { 
+		   PropertyReader properties = new PropertyReader(); 
+		   CommonDAO objDAO = new CommonDAO();
+		   CachedRowSet rs = objDAO.selectAll(properties.getTableName("SectionOne"));
+		   List<SectionOneDTO> list = new ArrayList<SectionOneDTO>();
+		   
+		   while (rs.next()) {
+			   SectionOneDTO resrcLevelDTO = new SectionOneDTO();
+			   resrcLevelDTO.setPinNo(rs.getString("PinNo"));
+			   resrcLevelDTO.setRowID(rs.getString("RowID"));
+	    	   resrcLevelDTO.setVerNo(rs.getString("VerNo"));
+	    	   resrcLevelDTO.setReleaseDate(rs.getDate("ReleaseDate"));
+	    	   resrcLevelDTO.setReviewedBy(rs.getString("ReviewedBy"));
+	    	   resrcLevelDTO.setApprovedBy(rs.getString("ApprovedBy"));
+	    	   resrcLevelDTO.setChangeDesc(rs.getString("ChangeDesc"));
+
+	        	   list.add(resrcLevelDTO);
+	           }
+	         
+	       return list;
+	   }
+
+}

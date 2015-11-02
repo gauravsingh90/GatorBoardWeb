@@ -1,0 +1,5 @@
+package com.gatorboard.dto;
+
+public class getEventsDTO {
+
+}
